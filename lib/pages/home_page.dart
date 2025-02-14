@@ -1,3 +1,8 @@
+import 'package:dunu_app_2b_may/tabs/burger_tab.dart';
+import 'package:dunu_app_2b_may/tabs/donut_tab.dart';
+import 'package:dunu_app_2b_may/tabs/pancakes_tab.dart';
+import 'package:dunu_app_2b_may/tabs/pizza_tab.dart';
+import 'package:dunu_app_2b_may/tabs/smoothie_tab.dart';
 import 'package:dunu_app_2b_may/utils/my_tab.dart';
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -73,9 +78,19 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              //tabbar
-              TabBar(tabs: myTabs)
-              //tabbarview
+              //tabbar(barra de pestaña)
+              TabBar(tabs: myTabs),
+              //tabbarview(contenido de pestañas)
+              Expanded(
+                child: TabBarView(children: [
+                  DonutTab(),
+                  BurgerTab(),
+                  SmoothieTab(),
+                  PancakesTab(),
+                  PizzaTab()
+                ]),
+              ),
+
               //carrito
             ],
           )),
