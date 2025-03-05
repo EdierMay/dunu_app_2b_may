@@ -18,23 +18,23 @@ class _HomePageState extends State<HomePage> {
   List<Widget> myTabs = [
     //donutab
     MyTab(
-      iconPath: 'lib/icons/icons/donut.png',
+      iconPath: 'lib/icons/donut.png',
     ),
     //burguertab
     MyTab(
-      iconPath: 'lib/icons/icons/burger.png',
+      iconPath: 'lib/icons/burger.png',
     ),
     //smooothietab
     MyTab(
-      iconPath: 'lib/icons/icons/smoothie.png',
+      iconPath: 'lib/icons/smoothie.png',
     ),
     //pancaketab
     MyTab(
-      iconPath: 'lib/icons/icons/pancakes.png',
+      iconPath: 'lib/icons/pancakes.png',
     ),
     //pizzatab
     MyTab(
-      iconPath: 'lib/icons/icons/pizza.png',
+      iconPath: 'lib/icons/pizza.png',
     ),
   ];
 
@@ -78,9 +78,9 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              //tabbar(barra de pestaña)
+              //tabbar (Barra de pestañas)
               TabBar(tabs: myTabs),
-              //tabbarview(contenido de pestañas)
+              //tabbarview (Contenido de pestañas)
               Expanded(
                 child: TabBarView(children: [
                   DonutTab(),
