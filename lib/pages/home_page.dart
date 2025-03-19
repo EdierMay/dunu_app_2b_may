@@ -43,99 +43,95 @@ class _HomePageState extends State<HomePage> {
     return DefaultTabController(
       length: 5,
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          //icono izquierdo
-          leading: Icon(
-            Icons.menu,
-            color: Colors.grey[800],
-          ),
-          //icono derecho
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 24.0),
-              child: Icon(Icons.person),
-            )
-          ],
-        ),
-        body: Column(
-          children: [
-            //texto principal
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
-              child: Row(
-                children: [
-                  Text("I want to ", style: TextStyle(fontSize: 32)),
-                  Text("Eat",
-                      style: TextStyle(
-                          //tamaño de letra
-                          fontSize: 32,
-                          //texto en negritas
-                          fontWeight: FontWeight.bold,
-                          //subrayado
-                          decoration: TextDecoration.underline))
-                ],
-              ),
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            //icono izquierdo
+            leading: Icon(
+              Icons.menu,
+              color: Colors.grey[800],
             ),
-            //tabbar (Barra de pestañas)
-            TabBar(tabs: myTabs),
-            //tabbarview (Contenido de pestañas)
-            Expanded(
-              child: TabBarView(
-                children: [
+            //icono derecho
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(right: 24.0),
+                child: Icon(Icons.person),
+              )
+            ],
+          ),
+          body: Column(
+            children: [
+              //texto principal
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
+                child: Row(
+                  children: [
+                    Text("I want to ", style: TextStyle(fontSize: 32)),
+                    Text("Eat",
+                        style: TextStyle(
+                            //tamaño de letra
+                            fontSize: 32,
+                            //texto en negritas
+                            fontWeight: FontWeight.bold,
+                            //subrayado
+                            decoration: TextDecoration.underline))
+                  ],
+                ),
+              ),
+              //tabbar (Barra de pestañas)
+              TabBar(tabs: myTabs),
+              //tabbarview (Contenido de pestañas)
+              Expanded(
+                child: TabBarView(children: [
                   DonutTab(),
                   BurgerTab(),
                   SmoothieTab(),
                   PancakesTab(),
                   PizzaTab()
-                ],
+                ]),
               ),
-            ),
-            //carrito
-            Container(
-              color: Colors.white,
-              padding: const EdgeInsets.all(16),
-              child: Row(
-                //Poner los elementos de los elementos en la fila
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 28),
-                    child: Column(
-                      //alinearlo a la izquierda
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          '2 Items | \$45',
-                          style: TextStyle(
-                              fontSize: 18,
-                              //letras en Negritas
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          "Delivery Charges Included",
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      ],
+
+              //carrito
+              Container(
+                color: Colors.white,
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                  //poner los elementos en los extremos de la fila
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Padding(
+                        padding: EdgeInsets.only(left: 28),
+                        child: Column(
+                          //alinearlo a la izquierda
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '2 Items | \$45',
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  //negritas
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              "Delivery charges Included",
+                              style: TextStyle(fontSize: 12),
+                            ),
+                          ],
+                        )),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.pink,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 24, vertical: 12)),
+                      child: Text('View Cart',
+                          style: TextStyle(color: Colors.white)),
                     ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.pink),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 24, vertical: 12),
-                    child: const Text(
-                      'View Cart',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
-      ),
+            ],
+          )),
     );
   }
 }
