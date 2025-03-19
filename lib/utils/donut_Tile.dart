@@ -22,7 +22,7 @@ class DonutTile extends StatelessWidget {
       padding: const EdgeInsets.all(12.0),
       child: Container(
         decoration: BoxDecoration(
-            color: donutColor[100], borderRadius: BorderRadius.circular(24)),
+            color: donutColor[50], borderRadius: BorderRadius.circular(24)),
         child: Column(
           children: [
             // PriceTag precio de la dona
