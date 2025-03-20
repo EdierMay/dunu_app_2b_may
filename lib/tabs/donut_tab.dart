@@ -39,7 +39,11 @@ class DonutTab extends StatelessWidget {
     ["Choco", "Walmart", "95", Colors.brown, "lib/images/chocolate_donut.png"],
   ];
 
-  DonutTab({super.key});
+  final Function addItemToCart; // Recibe la función para añadir al carrito
+
+  DonutTab(
+      {super.key,
+      required this.addItemToCart}); // Constructor que recibe la función
 
   @override
   Widget build(BuildContext context) {
@@ -57,12 +61,21 @@ class DonutTab extends StatelessWidget {
           //relacion de aspecto (proporcion)
           childAspectRatio: 1 / 1.5),
       itemBuilder: (context, index) {
-        return DonutTile(
-          donutFlavor: donutsOnsale[index][0],
-          donutStore: donutsOnsale[index][1],
-          donutPrice: donutsOnsale[index][2],
-          donutColor: donutsOnsale[index][3],
-          imageName: donutsOnsale[index][4],
+        return GestureDetector(
+          onTap: () {
+            final donut = donutsOnsale[index];
+            final donutName = donut[0];
+            final donutPrice =
+                double.parse(donut[2]); // Convierte el precio a double
+            addItemToCart(donutName, donutPrice); // Agrega al carrito
+          },
+          child: DonutTile(
+            donutFlavor: donutsOnsale[index][0],
+            donutStore: donutsOnsale[index][1],
+            donutPrice: donutsOnsale[index][2],
+            donutColor: donutsOnsale[index][3],
+            imageName: donutsOnsale[index][4],
+          ),
         );
       },
     );
