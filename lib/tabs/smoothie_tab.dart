@@ -4,38 +4,64 @@ import 'package:flutter/material.dart';
 class SmoothieTab extends StatelessWidget {
   final List donutsOnsale = [
     //[donutFlavor, donutStore, donutPrice, donotColor,imageName]
+
     [
-      "Ice Cream",
-      "Krispy Kreme",
+      "Strawberry Smoothie",
+      "Smoothie King",
       "36",
-      Colors.blue,
-      "lib/images/icecream_donut.png"
-    ],
-    [
-      "Strawberry",
-      "Dunkin Donuts",
-      "45",
       Colors.red,
-      "lib/images/strawberry_donut.png"
-    ],
-    ["Grape Ape", "Costco", "84", Colors.purple, "lib/images/grape_donut.png"],
-    ["Choco", "Walmart", "95", Colors.brown, "lib/images/chocolate_donut.png"],
-    [
-      "Ice Cream",
-      "Krispy Kreme",
-      "36",
-      Colors.blue,
-      "lib/images/icecream_donut.png"
+      "lib/images/strawberry_smoothie.png"
     ],
     [
-      "Strawberry",
-      "Dunkin Donuts",
+      "Mango Smoothie",
+      "Jamba Juice",
       "45",
-      Colors.red,
-      "lib/images/strawberry_donut.png"
+      Colors.orange,
+      "lib/images/mango_smoothie.png"
     ],
-    ["Grape Ape", "Costco", "84", Colors.purple, "lib/images/grape_donut.png"],
-    ["Choco", "Walmart", "95", Colors.brown, "lib/images/chocolate_donut.png"],
+    [
+      "Blueberry Smoothie",
+      "Tropical Smoothie",
+      "84",
+      Colors.blue,
+      "lib/images/blueberry_smoothie.png"
+    ],
+    [
+      "Green Smoothie",
+      "Pressed Juicery",
+      "95",
+      Colors.green,
+      "lib/images/green_smoothie.png"
+    ],
+
+    [
+      "Pineapple Smoothie",
+      "Naked Juice",
+      "52",
+      Colors.yellow,
+      "lib/images/pineapple_smoothie.png"
+    ],
+    [
+      "Acai Smoothie",
+      "Smoothie King",
+      "64",
+      Colors.purple,
+      "lib/images/acai_smoothie.png"
+    ],
+    [
+      "Peach Smoothie",
+      "Jamba Juice",
+      "78",
+      Colors.yellow,
+      "lib/images/peach_smoothie.png"
+    ],
+    [
+      "Raspberry Smoothie",
+      "Tropical Smoothie",
+      "55",
+      Colors.pink,
+      "lib/images/raspberry_smoothie.png"
+    ],
   ];
 
   final Function addItemToCart;

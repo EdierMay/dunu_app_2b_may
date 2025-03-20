@@ -4,38 +4,63 @@ import 'package:flutter/material.dart';
 class PancakesTab extends StatelessWidget {
   final List donutsOnsale = [
     //[donutFlavor, donutStore, donutPrice, donotColor,imageName]
+
     [
-      "Ice Cream",
-      "Krispy Kreme",
+      "Classic Pancakes",
+      "IHop",
       "36",
       Colors.blue,
-      "lib/images/icecream_donut.png"
+      "lib/images/classic_pancakes.png"
     ],
     [
-      "Strawberry",
-      "Dunkin Donuts",
+      "Chocolate Pancakes",
+      "Denny's",
       "45",
-      Colors.red,
-      "lib/images/strawberry_donut.png"
+      Colors.brown,
+      "lib/images/chocolate_pancakes.png"
     ],
-    ["Grape Ape", "Costco", "84", Colors.purple, "lib/images/grape_donut.png"],
-    ["Choco", "Walmart", "95", Colors.brown, "lib/images/chocolate_donut.png"],
     [
-      "Ice Cream",
-      "Krispy Kreme",
-      "36",
+      "Strawberry Pancakes",
+      "Pancake House",
+      "84",
+      Colors.red,
+      "lib/images/strawberry_pancakes.png"
+    ],
+    [
+      "Banana Pancakes",
+      "Waffle House",
+      "95",
+      Colors.yellow,
+      "lib/images/banana_pancakes.png"
+    ],
+    [
+      "Blueberry Pancakes",
+      "Bob Evans",
+      "52",
       Colors.blue,
-      "lib/images/icecream_donut.png"
+      "lib/images/blueberry_pancakes.png"
     ],
     [
-      "Strawberry",
-      "Dunkin Donuts",
-      "45",
-      Colors.red,
-      "lib/images/strawberry_donut.png"
+      "Nutella Pancakes",
+      "Cracker Barrel",
+      "64",
+      Colors.brown,
+      "lib/images/nutella_pancakes.png"
     ],
-    ["Grape Ape", "Costco", "84", Colors.purple, "lib/images/grape_donut.png"],
-    ["Choco", "Walmart", "95", Colors.brown, "lib/images/chocolate_donut.png"],
+    [
+      "Cinnamon Pancakes",
+      "Perkins",
+      "78",
+      Colors.orange,
+      "lib/images/cinnamon_pancakes.png"
+    ],
+    [
+      "Caramel Pancakes",
+      "Village Inn",
+      "55",
+      Colors.brown,
+      "lib/images/caramel_pancakes.png"
+    ],
   ];
 
   final Function addItemToCart;

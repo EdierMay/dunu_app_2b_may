@@ -5,38 +5,63 @@ class BurgerTab extends StatelessWidget {
   // Lista de donas
   final List donutsOnsale = [
     //[donutFlavor, donutStore, donutPrice, donotColor,imageName]
+
     [
-      "Ice Cream",
-      "Krispy Kreme",
+      "Cheeseburger",
+      "McDonald's",
       "36",
-      Colors.blue,
-      "lib/images/icecream_donut.png"
+      Colors.yellow,
+      "lib/images/cheeseburger.png"
     ],
     [
-      "Strawberry",
-      "Dunkin Donuts",
+      "Bacon Burger",
+      "Burger King",
       "45",
       Colors.red,
-      "lib/images/strawberry_donut.png"
+      "lib/images/bacon_burger.png"
     ],
-    ["Grape Ape", "Costco", "84", Colors.purple, "lib/images/grape_donut.png"],
-    ["Choco", "Walmart", "95", Colors.brown, "lib/images/chocolate_donut.png"],
     [
-      "Ice Cream",
-      "Krispy Kreme",
-      "36",
+      "Veggie Burger",
+      "Costco",
+      "84",
+      Colors.green,
+      "lib/images/veggie_burger.png"
+    ],
+    [
+      "Classic Burger",
+      "Walmart",
+      "95",
+      Colors.brown,
+      "lib/images/classic_burger.png"
+    ],
+    [
+      "Mushroom Swiss",
+      "Five Guys",
+      "52",
+      Colors.orange,
+      "lib/images/mushroom_swiss_burger.png"
+    ],
+    [
+      "BBQ Burger",
+      "Shake Shack",
+      "64",
+      Colors.deepOrange,
+      "lib/images/bbq_burger.png"
+    ],
+    [
+      "Chicken Burger",
+      "Chick-fil-A",
+      "78",
+      Colors.pink,
+      "lib/images/chicken_burger.png"
+    ],
+    [
+      "Fish Burger",
+      "Hardee's",
+      "55",
       Colors.blue,
-      "lib/images/icecream_donut.png"
+      "lib/images/fish_burger.png"
     ],
-    [
-      "Strawberry",
-      "Dunkin Donuts",
-      "45",
-      Colors.red,
-      "lib/images/strawberry_donut.png"
-    ],
-    ["Grape Ape", "Costco", "84", Colors.purple, "lib/images/grape_donut.png"],
-    ["Choco", "Walmart", "95", Colors.brown, "lib/images/chocolate_donut.png"],
   ];
 
   final Function addItemToCart;

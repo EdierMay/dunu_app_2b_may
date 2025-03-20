@@ -4,38 +4,63 @@ import 'package:flutter/material.dart';
 class PizzaTab extends StatelessWidget {
   final List donutsOnsale = [
     //[donutFlavor, donutStore, donutPrice, donotColor,imageName]
+
     [
-      "Ice Cream",
-      "Krispy Kreme",
+      "Margherita Pizza",
+      "Domino's",
       "36",
-      Colors.blue,
-      "lib/images/icecream_donut.png"
-    ],
-    [
-      "Strawberry",
-      "Dunkin Donuts",
-      "45",
       Colors.red,
-      "lib/images/strawberry_donut.png"
-    ],
-    ["Grape Ape", "Costco", "84", Colors.purple, "lib/images/grape_donut.png"],
-    ["Choco", "Walmart", "95", Colors.brown, "lib/images/chocolate_donut.png"],
-    [
-      "Ice Cream",
-      "Krispy Kreme",
-      "36",
-      Colors.blue,
-      "lib/images/icecream_donut.png"
+      "lib/images/margherita_pizza.png"
     ],
     [
-      "Strawberry",
-      "Dunkin Donuts",
+      "Pepperoni Pizza",
+      "Papa John's",
       "45",
-      Colors.red,
-      "lib/images/strawberry_donut.png"
+      Colors.orange,
+      "lib/images/pepperoni_pizza.png"
     ],
-    ["Grape Ape", "Costco", "84", Colors.purple, "lib/images/grape_donut.png"],
-    ["Choco", "Walmart", "95", Colors.brown, "lib/images/chocolate_donut.png"],
+    [
+      "Veggie Pizza",
+      "Pizza Hut",
+      "84",
+      Colors.green,
+      "lib/images/veggie_pizza.png"
+    ],
+    [
+      "BBQ Chicken Pizza",
+      "Little Caesars",
+      "95",
+      Colors.brown,
+      "lib/images/bbq_chicken_pizza.png"
+    ],
+    [
+      "Hawaiian Pizza",
+      "Marco's Pizza",
+      "52",
+      Colors.yellow,
+      "lib/images/hawaiian_pizza.png"
+    ],
+    [
+      "Meat Lovers Pizza",
+      "Papa Murphy's",
+      "64",
+      Colors.redAccent,
+      "lib/images/meat_lovers_pizza.png"
+    ],
+    [
+      "Four Cheese Pizza",
+      "Blaze Pizza",
+      "78",
+      Colors.yellowAccent,
+      "lib/images/four_cheese_pizza.png"
+    ],
+    [
+      "Supreme Pizza",
+      "Round Table Pizza",
+      "55",
+      Colors.deepPurple,
+      "lib/images/supreme_pizza.png"
+    ],
   ];
 
   final Function addItemToCart;
