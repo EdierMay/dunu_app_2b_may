@@ -1,8 +1,27 @@
+// ignore: unused_import
 import 'package:dunu_app_2b_may/pages/home_page.dart';
+// ignore: unused_import
+import 'package:dunu_app_2b_may/screen/login/startup_screen.dart';
+import 'package:dunu_app_2b_may/screen/startup_screen.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
+//Inicializacion firebase
+import 'package:firebase_core/firebase_core.dart';
+// ignore: unused_import
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding
+      .ensureInitialized(); // Asegura que los widgets estén listos antes de la inicialización
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions
+        .currentPlatform, // Usamos la configuración para la plataforma actual
+  );
+  runApp(MyApp()); // Ahora que Firebase está inicializado, ejecutamos la app
+}
+
+class DefaultFirebaseOptions {
+  static var currentPlatform;
 }
 
 class MyApp extends StatelessWidget {
@@ -18,7 +37,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: const StartUpScreen(),
+
+      //home: const HomePage(),
     );
   }
 }

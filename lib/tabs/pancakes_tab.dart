@@ -96,6 +96,7 @@ class PancakesTab extends StatelessWidget {
             donutPrice: donutsOnsale[index][2],
             donutColor: donutsOnsale[index][3],
             imageName: donutsOnsale[index][4],
+            onTap: () {},
           ),
         );
       },

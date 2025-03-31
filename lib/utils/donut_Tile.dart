@@ -14,7 +14,11 @@ class DonutTile extends StatelessWidget {
       required this.donutStore,
       required this.donutPrice,
       this.donutColor,
-      required this.imageName});
+      required this.imageName,
+      required Function() onTap,
+      required Function() onTap,
+      required Function() onTap,
+      required Function() onTap});
 
   @override
   Widget build(BuildContext context) {
