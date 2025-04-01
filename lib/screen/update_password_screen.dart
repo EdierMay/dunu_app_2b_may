@@ -51,6 +51,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
       User? user = FirebaseAuth.instance.currentUser;
       if (user != null) {
         await user.updatePassword(newPassword);
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text("Contraseña actualizada correctamente."),
         ));

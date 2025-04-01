@@ -40,11 +40,15 @@ class AuthService {
 
         return await _auth.signInWithCredential(credential);
       } else {
-        print("Error: No se obtuvo el token de acceso de Facebook.");
+        if (kDebugMode) {
+          print("Error: No se obtuvo el token de acceso de Facebook.");
+        }
         return null;
       }
     } catch (e) {
-      print("Error durante la autenticación con Facebook: $e");
+      if (kDebugMode) {
+        print("Error durante la autenticación con Facebook: $e");
+      }
       return null;
     }
   }
@@ -92,16 +96,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
       // Si el registro es exitoso, redirige al HomePage
       if (userCredential.user != null) {
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Usuario registrado exitosamente")),
         );
         Navigator.pushReplacement(
+          // ignore: use_build_context_synchronously
           context,
           MaterialPageRoute(builder: (context) => const HomePage()),
         );
       }
     } catch (e) {
-      print(e); // En caso de error, muestra el mensaje de error
+      if (kDebugMode) {
+        print(e);
+      } // En caso de error, muestra el mensaje de error
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Error al registrar el usuario: $e")),
       );

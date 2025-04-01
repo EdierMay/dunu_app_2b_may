@@ -35,10 +35,12 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
 
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("Correo de recuperación enviado a $email"),
       ));
       // Redirigir a la página de login o cualquier otra pantalla
+      // ignore: use_build_context_synchronously
       context.push(const HomePage());
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(

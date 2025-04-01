@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CartPage extends StatelessWidget {
   final List<Map<String, dynamic>> cartItems;
 
-  CartPage({required this.cartItems});
+  const CartPage({super.key, required this.cartItems});
 
   @override
   Widget build(BuildContext context) {
