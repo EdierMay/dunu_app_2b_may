@@ -1,12 +1,18 @@
+//Utilidades
+import 'package:flutter/material.dart';
+import 'package:dunu_app_2b_may/common/color_extension.dart';
+import 'package:dunu_app_2b_may/common_widget/navigate_drawer.dart';
+
+//Tabs
 import 'package:dunu_app_2b_may/tabs/burger_tab.dart';
 import 'package:dunu_app_2b_may/tabs/donut_tab.dart';
 import 'package:dunu_app_2b_may/tabs/pancakes_tab.dart';
 import 'package:dunu_app_2b_may/tabs/pizza_tab.dart';
 import 'package:dunu_app_2b_may/tabs/smoothie_tab.dart';
-import 'package:dunu_app_2b_may/utils/cart_page.dart';
 import 'package:dunu_app_2b_may/utils/my_tab.dart';
-//import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+
+//Screens
+import 'package:dunu_app_2b_may/pages/profile_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,47 +22,23 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // Lista de productos en el carrito
-  List<Map<String, dynamic>> cartItems = [];
+  // ignore: prefer_final_fields
+  List<Map<String, dynamic>> _cartItems = [];
+  double _totalPrice = 0.0;
 
-  // Función para añadir productos al carrito
-  void addItemToCart(String name, double price) {
+  void addToCart(String name, double price) {
     setState(() {
-      cartItems.add({'name': name, 'price': price});
+      _cartItems.add({"name": name, "price": price});
+      _totalPrice += price;
     });
   }
 
-  // Calcular el total de productos en el carrito
-  double getTotal() {
-    return cartItems.fold(0, (sum, item) => sum + item['price']);
-  }
-
-  // Contar el número de productos en el carrito
-  int getItemCount() {
-    return cartItems.length;
-  }
-
   List<Widget> myTabs = [
-    //donutab
-    MyTab(
-      iconPath: 'lib/icons/donut.png',
-    ),
-    //burguertab
-    MyTab(
-      iconPath: 'lib/icons/burger.png',
-    ),
-    //smooothietab
-    MyTab(
-      iconPath: 'lib/icons/smoothie.png',
-    ),
-    //pancaketab
-    MyTab(
-      iconPath: 'lib/icons/pancakes.png',
-    ),
-    //pizzatab
-    MyTab(
-      iconPath: 'lib/icons/pizza.png',
-    ),
+    MyTab(iconPath: 'lib/icons/icons/donut.png'),
+    MyTab(iconPath: 'lib/icons/icons/burger.png'),
+    MyTab(iconPath: 'lib/icons/icons/smoothie.png'),
+    MyTab(iconPath: 'lib/icons/icons/pancakes.png'),
+    MyTab(iconPath: 'lib/icons/icons/pizza.png')
   ];
 
   @override
@@ -64,99 +46,68 @@ class _HomePageState extends State<HomePage> {
     return DefaultTabController(
       length: 5,
       child: Scaffold(
+        drawer: MyDrawer(),
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          //icono izquierdo
-          leading: Icon(
-            Icons.menu,
-            color: Colors.grey[800],
+          leading: Builder(
+            builder: (context) => IconButton(
+              icon: Icon(Icons.menu, color: Colors.grey[800]),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+            ),
           ),
-          //icono derecho
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 24.0),
-              child: Icon(Icons.person),
-            )
-          ],
         ),
         body: Column(
           children: [
-            //texto principal
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 18),
               child: Row(
                 children: [
-                  Text("I want to ", style: TextStyle(fontSize: 32)),
-                  Text("Eat",
-                      style: TextStyle(
-                          //tamaño de letra
-                          fontSize: 32,
-                          //texto en negritas
-                          fontWeight: FontWeight.bold,
-                          //subrayado
-                          decoration: TextDecoration.underline))
+                  Text("Tengo el deseo de ingerir  \nel sustento vital", style: TextStyle(fontSize: 28)),
                 ],
               ),
             ),
-            //tabbar (Barra de pestañas)
             TabBar(tabs: myTabs),
-            //tabbarview (Contenido de pestañas)
             Expanded(
               child: TabBarView(
                 children: [
-                  DonutTab(addItemToCart: addItemToCart),
-                  BurgerTab(addItemToCart: addItemToCart),
-                  SmoothieTab(addItemToCart: addItemToCart),
-                  PancakesTab(addItemToCart: addItemToCart),
-                  PizzaTab(addItemToCart: addItemToCart),
+                  DonutTab(addToCart: addToCart),
+                  BurgerTab(addToCart: addToCart),
+                  SmoothieTab(addToCart: addToCart, addItemToCart: null,),
+                  PancakesTab(addToCart: addToCart, addItemToCart: null,),
+                  PizzaTab(addToCart: addToCart, addItemToCart: null,),
                 ],
               ),
             ),
-            //carrito
             Container(
               color: Colors.white,
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 18),
               child: Row(
-                //poner los elementos en los extremos de la fila
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 28),
+                    padding: const EdgeInsets.only(left: 8),
                     child: Column(
-                      //alinearlo a la izquierda
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '${getItemCount()} Items | \$${getTotal().toStringAsFixed(2)}',
-                          style: TextStyle(
-                              fontSize: 18,
-                              //negritas
-                              fontWeight: FontWeight.bold),
+                          '\${_cartItems.length} Items | \$${_totalPrice.toStringAsFixed(2)}',
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          "Delivery charges Included",
+                          "Delivery Charges Included",
                           style: TextStyle(fontSize: 12),
                         ),
                       ],
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                      // Navegar a la página del carrito
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CartPage(cartItems: cartItems),
-                        ),
-                      );
-                    },
+                    onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.pink,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                      backgroundColor: TColor.primary,
+                      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
                     ),
-                    child: Text('View Cart',
-                        style: TextStyle(color: Colors.white)),
+                    child: const Text('View Cart', style: TextStyle(color: Colors.white)),
                   ),
                 ],
               ),

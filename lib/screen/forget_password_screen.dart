@@ -1,10 +1,3 @@
-// ignore_for_file: duplicate_import
-
-import 'package:dunu_app_2b_may/common/color_extension.dart';
-import 'package:dunu_app_2b_may/common_widget/round_button.dart';
-import 'package:dunu_app_2b_may/common_widget/round_text_field.dart';
-import 'package:dunu_app_2b_may/pages/home_page.dart';
-// ignore: unused_import
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dunu_app_2b_may/common/color_extension.dart';
@@ -27,7 +20,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
     String email = _emailController.text.trim();
 
     if (email.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Por favor ingresa un correo electrónico."),
       ));
       return;
@@ -35,16 +28,17 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
 
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text("Correo de recuperación enviado a $email"),
       ));
-      // Redirigir a la página de login o cualquier otra pantalla
-      // ignore: use_build_context_synchronously
-      context.push(const HomePage());
+      // Redirigir a la página de inicio después de enviar el correo
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const HomePage()),
+      );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Error: $e"),
+        content: Text("Error: ${e.toString()}"),
       ));
     }
   }
@@ -54,7 +48,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: SizedBox(
-          height: context.height,
+          height: MediaQuery.of(context).size.height,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -74,7 +68,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                           children: [
                             InkWell(
                               onTap: () {
-                                context.pop();
+                                Navigator.pop(context);
                               },
                               child: Image.asset(
                                 "lib/icons/icons/back.png",
@@ -125,8 +119,4 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
       ),
     );
   }
-}
-
-class FirebaseAuth {
-  static var instance;
 }

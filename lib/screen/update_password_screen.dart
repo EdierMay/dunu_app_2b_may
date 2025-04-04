@@ -5,15 +5,6 @@ import 'package:dunu_app_2b_may/common_widget/round_button.dart';
 import 'package:dunu_app_2b_may/common_widget/round_text_field.dart';
 import 'package:dunu_app_2b_may/pages/home_page.dart';
 
-// ignore: duplicate_import
-import '../common/color_extension.dart';
-// ignore: duplicate_import
-import '../common_widget/round_button.dart';
-// ignore: duplicate_import
-import '../common_widget/round_text_field.dart';
-// ignore: duplicate_import
-import '../pages/home_page.dart';
-
 class UpdatePasswordScreen extends StatefulWidget {
   const UpdatePasswordScreen({super.key});
 
@@ -23,8 +14,7 @@ class UpdatePasswordScreen extends StatefulWidget {
 
 class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
   final TextEditingController _newPasswordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
-      TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
 
   // Función para cambiar la contraseña
   Future<void> _updatePassword() async {
@@ -51,7 +41,6 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
       User? user = FirebaseAuth.instance.currentUser;
       if (user != null) {
         await user.updatePassword(newPassword);
-        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text("Contraseña actualizada correctamente."),
         ));

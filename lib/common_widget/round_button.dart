@@ -1,5 +1,3 @@
-// ignore: unused_import
-import 'package:dunu_app_2b_may/common/extension_de%20color.dart';
 import 'package:flutter/material.dart';
 import 'package:dunu_app_2b_may/common/color_extension.dart';
 
@@ -10,11 +8,12 @@ class RoundButton extends StatelessWidget {
   final RoundButtonType type;
   final VoidCallback onPressed;
 
-  const RoundButton(
-      {super.key,
-      required this.title,
-      this.type = RoundButtonType.primary,
-      required this.onPressed});
+  const RoundButton({
+    super.key,
+    required this.title,
+    this.type = RoundButtonType.primary,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,23 +21,17 @@ class RoundButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: MaterialButton(
         onPressed: onPressed,
-        minWidth: double.maxFinite,
+        minWidth: double.infinity,
         elevation: 0,
-        color: type == RoundButtonType.primary
-            ? TColor.primary
-            : TColor.tertiary, //Fondo blanco, letras negras
+        color: type == RoundButtonType.primary ? TColor.primary : TColor.tertiary,
         height: 60,
         shape: RoundedRectangleBorder(
-          side: BorderSide.none,
           borderRadius: BorderRadius.circular(30),
         ),
-
         child: Text(
           title,
           style: TextStyle(
-            color: type == RoundButtonType.primary
-                ? Colors.white
-                : TColor.primaryText, //Fondo morado letras blancas
+            color: type == RoundButtonType.primary ? Colors.white : TColor.primaryText,
             fontSize: 14,
             fontWeight: FontWeight.w600,
           ),

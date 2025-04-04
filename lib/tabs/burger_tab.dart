@@ -1,11 +1,10 @@
 import 'package:dunu_app_2b_may/utils/donut_tile.dart';
 import 'package:flutter/material.dart';
 
-class BurgerTab extends StatelessWidget {
+class BurguerTab extends StatelessWidget {
   // Lista de donas
   final List donutsOnsale = [
     //[donutFlavor, donutStore, donutPrice, donotColor,imageName]
-
     [
       "Cheeseburger",
       "McDonald's",
@@ -64,8 +63,11 @@ class BurgerTab extends StatelessWidget {
     ],
   ];
 
-  final Function addItemToCart;
-  BurgerTab({super.key, required this.addItemToCart});
+   final Function addItemToCart; // Recibe la función para añadir al carrito
+
+  BurguerTab(
+      {super.key,
+      required this.addItemToCart}); // Constructor que recibe la función
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +83,7 @@ class BurgerTab extends StatelessWidget {
           //numero de columnas //crossAxisCount
           crossAxisCount: 2,
           //relacion de aspecto (proporcion)
-          childAspectRatio: 1 / 1.3),
+          childAspectRatio: 1 / 1.5),
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
@@ -104,3 +106,13 @@ class BurgerTab extends StatelessWidget {
     );
   }
 }
+ 
+ 
+//grid,en español es como malla o cuadricula
+ 
+   // elementos en nuestra lista
+   // itemCount: donutsOnsale.length,
+   //el eje principal en una columna es vertical
+   //el eje cruzado crosaxis para horizontal
+   //main axis un columna seria vertical
+   //Starting GridView

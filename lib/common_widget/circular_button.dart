@@ -6,11 +6,7 @@ class CircleButton extends StatelessWidget {
   final bool isSelect;
   final VoidCallback onPressed;
 
-  const CircleButton(
-      {super.key,
-      required this.title,
-      required this.isSelect,
-      required this.onPressed});
+  const CircleButton({super.key, required this.title, required this.isSelect, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +17,13 @@ class CircleButton extends StatelessWidget {
         width: 40,
         height: 40,
         decoration: BoxDecoration(
-            color: isSelect ? TColor.primaryText : Colors.white,
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: TColor.secondaryText, width: 1)),
+          color: isSelect ? TColor.primaryText : Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: TColor.secondaryText, width: 1)
+        ),
         alignment: Alignment.center,
-        child: Text(
+        child: 
+        Text(
           title,
           style: TextStyle(
             color: TColor.secondaryText,
@@ -37,3 +35,4 @@ class CircleButton extends StatelessWidget {
     );
   }
 }
+

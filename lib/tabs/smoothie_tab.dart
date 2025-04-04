@@ -65,7 +65,7 @@ class SmoothieTab extends StatelessWidget {
   ];
 
   final Function addItemToCart;
-  SmoothieTab({super.key, required this.addItemToCart});
+  SmoothieTab({super.key, required this.addItemToCart, required void Function(String name, double price) addToCart});
 
   @override
   Widget build(BuildContext context) {

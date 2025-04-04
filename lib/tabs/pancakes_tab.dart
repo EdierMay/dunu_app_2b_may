@@ -64,7 +64,7 @@ class PancakesTab extends StatelessWidget {
   ];
 
   final Function addItemToCart;
-  PancakesTab({super.key, required this.addItemToCart});
+  PancakesTab({super.key, required this.addItemToCart, required void Function(String name, double price) addToCart});
 
   @override
   Widget build(BuildContext context) {

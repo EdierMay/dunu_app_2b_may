@@ -34,8 +34,7 @@ class VerificationPage extends StatelessWidget {
                 } else {
                   // Si el correo no está verificado, mostrar mensaje de espera
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text(
-                        "Por favor verifica tu correo antes de continuar."),
+                    content: Text("Por favor verifica tu correo antes de continuar."),
                   ));
                 }
               },

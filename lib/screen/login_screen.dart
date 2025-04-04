@@ -1,29 +1,26 @@
-import 'package:firebase_auth/firebase_auth.dart'
-    as firebase_auth; // Alias para FirebaseAuth
+import 'package:dunu_app_2b_may/screen/forget_password_screen.dart';
+import 'package:dunu_app_2b_may/screen/login/verification_page.dart';
+import 'package:dunu_app_2b_may/screen/sign_upscrren.dart';
+import 'package:dunu_app_2b_may/screen/verification_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:dunu_app_2b_may/common/color_extension.dart';
 import 'package:dunu_app_2b_may/common_widget/round_button.dart';
 import 'package:dunu_app_2b_may/common_widget/round_text_field.dart';
 // ignore: unused_import
-import 'package:dunu_app_2b_may/screen/login/verification_page.dart';
-import 'package:dunu_app_2b_may/pages/home_page.dart';
-// ignore: unused_import
 import 'package:dunu_app_2b_may/screen/login/sign_up_screen.dart';
-// ignore: unused_import
+import 'package:dunu_app_2b_may/pages/home_page.dart';
 import 'package:dunu_app_2b_may/screen/login/forget_password_screen.dart';
 
-// Librerías de autenticación
+// librerias de autentificacion
 import 'package:firebase_core/firebase_core.dart';
 // ignore: duplicate_import
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:dunu_app_2b_may/screen/login/login_screen.dart';
-import 'forget_password_screen.dart';
-import 'sign_upscrren.dart';
-import 'verification_page.dart';
 
-// Inicio -  sesión por correo y contraseña
+// Inicio - sesión por correo y contraseña
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -31,12 +28,10 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Donut App',
+      title: 'Dunu App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -44,6 +39,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+// fin - sesión por correo y contraseña
 
 // Cuerpo de inicio de sesión
 class LoginScreen extends StatefulWidget {
@@ -53,21 +49,21 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-// Inicio-Inicio sesión correo
+// Inicio - Inicio sesión correo
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   Future<void> _signInWithEmailPassword() async {
     try {
-      firebase_auth.UserCredential userCredential =
-          await firebase_auth.FirebaseAuth.instance.signInWithEmailAndPassword(
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
 
       // Comprobar si el correo está verificado
-      firebase_auth.User? user = userCredential.user;
+      User? user = userCredential.user;
       if (user != null && !user.emailVerified) {
         // Si el correo no está verificado, enviamos el correo de verificación
         await user.sendEmailVerification();
@@ -85,17 +81,17 @@ class _LoginScreenState extends State<LoginScreen> {
         // Si el correo está verificado, redirigir al usuario a la página principal
         context.push(const HomePage());
       }
-    } on firebase_auth.FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e) {
       String errorMessage = "Error desconocido";
       if (e.code == 'user-not-found') {
         errorMessage = "Usuario no encontrado.";
       } else if (e.code == 'wrong-password') {
         errorMessage = "Contraseña incorrecta.";
       }
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(errorMessage)));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(errorMessage)));
     }
   }
+// Final - Inicio sesión correo
 
   @override
   void initState() {
@@ -117,10 +113,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 alignment: Alignment.bottomCenter,
                 children: [
                   Image.asset(
-                    // Imagen principal
                     "lib/icons/icons/burger-1.png",
-                    width: double.maxFinite, // Máximo de su contenedor padre
-                    fit: BoxFit.fitWidth, // Máximo de su contenedor padre
+                    width: double.maxFinite, // Maximo de su contenedor padre
+                    fit: BoxFit.fitWidth, // Maximo de su contenedor padre
                   ),
                   Column(
                     children: [
@@ -141,9 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                         ),
                       ),
-                      const SizedBox(
-                        height: 25,
-                      ),
+                      const SizedBox(height: 25),
                       Text(
                         "Bienvenido de regreso",
                         style: TextStyle(
@@ -152,9 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      const SizedBox(
-                        height: 25,
-                      ),
+                      const SizedBox(height: 25),
                       // Btn-Facebook
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -170,9 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           child: Row(
                             children: [
-                              const SizedBox(
-                                width: 15,
-                              ),
+                              const SizedBox(width: 15),
                               Image.asset(
                                 'lib/icons/icons/fb.png',
                                 width: 25,
@@ -189,17 +178,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 ),
                               ),
-                              const SizedBox(
-                                width: 40,
-                              ),
+                              const SizedBox(width: 40),
                             ],
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 25,
-                      ),
-                      // Btn-Google
+                      const SizedBox(height: 25),
+                      // Btn- Google
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: MaterialButton(
@@ -214,9 +199,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           child: Row(
                             children: [
-                              const SizedBox(
-                                width: 15,
-                              ),
+                              const SizedBox(width: 15),
                               Image.asset(
                                 'lib/icons/icons/google.png',
                                 width: 25,
@@ -233,9 +216,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 ),
                               ),
-                              const SizedBox(
-                                width: 40,
-                              ),
+                              const SizedBox(width: 40),
                             ],
                           ),
                         ),
@@ -302,7 +283,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       context.push(const SignUpScreen());
                     },
                     child: Text(
-                      "Regístrate",
+                      "Registrate",
                       style: TextStyle(
                         color: TColor.primary,
                         fontSize: 14,

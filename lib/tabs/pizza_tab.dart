@@ -64,7 +64,7 @@ class PizzaTab extends StatelessWidget {
   ];
 
   final Function addItemToCart;
-  PizzaTab({super.key, required this.addItemToCart});
+  PizzaTab({super.key, required this.addItemToCart, required void Function(String name, double price) addToCart});
 
   @override
   Widget build(BuildContext context) {
